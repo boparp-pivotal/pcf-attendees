@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gopivotal.pcf.sme.ers</groupId>
-	<artifactId>pcf-ers-demo</artifactId>
+	<artifactId>pcf-attendees</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>pcf-ers-demo1</name>
+	<name>pcf-attendees</name>
 	<description>Core PCF ERS Demo </description>
 
 <!-- Dummy Comment -->
@@ -80,6 +80,12 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+                <dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<scope>runtime</scope>
+                        <version>6.1.0.jre8</version>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -110,7 +116,7 @@
 	</dependencies>
 
 	<build>
-                <finalName>${finalName}</finalName>
+               <finalName>${finalName}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
