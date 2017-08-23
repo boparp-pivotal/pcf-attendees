@@ -1,6 +1,6 @@
 ---
 resources:
-- name: msft-meetup-attendees
+- name: pcf-ers-demo
   type: git
   source:
     uri: {{github-uri}}
@@ -20,7 +20,7 @@ resources:
   type: s3
   source:
     bucket: {{s3-bucket-release-candidates}}
-    regexp: msft-meetup-attendees-(.*).jar
+    regexp: pcf-ers-demo-(.*).jar
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
     endpoint: {{s3-endpoint}}
@@ -39,30 +39,30 @@ jobs:
 - name: unit-test
   serial: true
   plan:
-  - get: msft-meetup-attendees
+  - get: pcf-ers-demo
     trigger: true
   - task: unit-test
-    file: msft-meetup-attendees/ci/tasks/unit-test.yml
+    file: pcf-ers-demo/ci/tasks/unit-test.yml
 
 - name: build-rc
   serial_groups: [version]
   plan:
-  - get: msft-meetup-attendees
+  - get: pcf-ers-demo
     passed: [unit-test]
     trigger: true
   - get: version
     params: {pre: rc}
   - task: build
-    file: msft-meetup-attendees/ci/tasks/build.yml
+    file: pcf-ers-demo/ci/tasks/build.yml
   - put: candidate-release
-    params: {file: build/msft-meetup-attendees-*.jar}
+    params: {file: build/pcf-ers-demo-*.jar}
   - put: version
     params: {file: version/number}
 
 - name: prepare-integration
   serial_groups: [version]
   plan:
-  - get: msft-meetup-attendees
+  - get: pcf-ers-demo
     passed: [build-rc]
     trigger: true
   - get: candidate-release
@@ -70,7 +70,7 @@ jobs:
     trigger: true
   - get: version
   - task: prepare-integration
-    file: msft-meetup-attendees/ci/tasks/prepare-integration.yml
+    file: pcf-ers-demo/ci/tasks/prepare-integration.yml
   - put: cf
     params:
           manifest: prepare-integration/manifest.yml
