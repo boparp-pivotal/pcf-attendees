@@ -41,8 +41,6 @@ jobs:
   plan:
   - get: pcf-ers-demo
     trigger: true
-  - task: unit-test
-    file: pcf-ers-demo/ci/tasks/unit-test.yml
 
 - name: build-rc
   serial_groups: [version]
