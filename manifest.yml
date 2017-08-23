@@ -1,7 +1,7 @@
 ---
 applications:
 - name: attendees-bluegreen
-  host: attendees-demo
+  host: meetup-attendees
   memory: 756M
   instances: 2
   path: target/pcf-attendees-0.0.1-SNAPSHOT.jar
