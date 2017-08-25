@@ -4,6 +4,13 @@
 # PCF Elastic Runtime Service (ERS) Base Demo
 Base application to demonstrate PCF ERS
 
+## New instructions added by Prasad
+This demo is slightly modified to add service bindings also
+To run the demo do the following:
+Create an instance of the Azure SQL DB service by name specified in manifest.yml
+deploy the pipeline into Concourse. Use the bad-pipeline-config as a sample - change values appropriately
+run the scripts makeItBlue.sh or makeItGreen.sh to commit to the repo and the pipeline should run
+
 ## Credits and contributions
 As you all know, we often transform other work into our own. This is all based from Andrew Ripka's [cf-workshop-spring-boot github repo](https://github.com/pivotal-cf-workshop/cf-workshop-spring-boot) with some basic modifications.
 
